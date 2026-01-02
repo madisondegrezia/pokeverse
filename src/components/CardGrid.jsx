@@ -2,7 +2,7 @@ import { Grid, Card, CardContent, Typography, CardMedia } from "@mui/material";
 
 function CardGrid({ data }) {
     return (
-        <Grid container spacing={2}>
+        <Grid container spacing={2} justifyContent="center">
         {data.map((item, index) => {
             const imageUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/${index + 1}.png`;
 
