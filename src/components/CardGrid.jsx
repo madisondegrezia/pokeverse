@@ -1,6 +1,10 @@
-import { Grid, Card, CardContent, Typography, CardMedia } from "@mui/material";
+import { useContext } from "react"
+import { Grid, Card, CardContent, Typography, CardMedia, CardActions, Button } from "@mui/material";
+import { CardContext } from "../contexts/CardContext";
 
 function CardGrid({ data }) {
+    const { addCard } = useContext(CardContext);
+
     return (
         <Grid container spacing={2} justifyContent="center">
         {data.map((item, index) => {
@@ -31,6 +35,17 @@ function CardGrid({ data }) {
 
                         <Typography variant="h6">{item.name}</Typography>
                     </CardContent>
+                    <CardActions sx={{ justifyContent: 'flex-end' }}>
+                        <Button size="small" sx={{
+                            bgcolor: '#31832d',
+                            color: '#FFFFFF',
+                            '&:hover': {
+                                bgcolor: '#21591e'
+                            }
+
+                        }}
+                        onClick={() => addCard({name: item.name, image: imageUrl})}>Catch</Button>
+                    </CardActions>
                 </Card>
             </Grid>
             );

@@ -4,6 +4,8 @@ import './App.css'
 import Header from './components/Header'
 import SearchBar from './components/SearchBar'
 import CardGrid from './components/CardGrid'
+import SquadGrid from "./components/SquadGrid";
+import { CardProvider } from "./contexts/CardContext";
 
 function App() {
   const [data, setData] = useState([]);         // Full array of items
@@ -29,29 +31,40 @@ function App() {
   );
 
   return (
-     <Container>
-      <Header />
-      <Box mt={12}>
-        <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
-      </Box>
-      
-      <Box mt={4}>
-        {loading && (
-          <Box display="flex" justifyContent="center" mt={4}>
-            <CircularProgress />
-          </Box>
+    <CardProvider>
+      <Container>
+        <Header />
+        {!loading && !error && (
+          <Box mt={12}>
+            <SquadGrid />
+           </Box>
+
         )}
+        <Box mt={2}>
+          <Typography variant="h5" fontWeight="bold" align="center">All Pokemon</Typography>
+        </Box>
 
-        {error && (
-          <Box display="flex" justifyContent="center" mt={4}>
-            <Typography color="error">Error: {error}</Typography>
-          </Box>
-        )}
+        <Box mt={4}>
+          <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+        </Box>
+        
+        <Box mt={4} mb={4}>
+          {loading && (
+            <Box display="flex" justifyContent="center" mt={4}>
+              <CircularProgress />
+            </Box>
+          )}
 
-        {!loading && !error && <CardGrid data={filteredData} />}
-      </Box>
-
-    </Container>
+          {error && (
+            <Box display="flex" justifyContent="center" mt={4}>
+              <Typography color="error">Error: {error}</Typography>
+            </Box>
+          )}
+          {!loading && !error && <CardGrid data={filteredData} />}
+        </Box>
+          
+      </Container>
+    </CardProvider>
 
   )
 }
