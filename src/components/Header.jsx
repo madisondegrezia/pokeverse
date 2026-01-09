@@ -11,12 +11,12 @@ function Header() {
         top: 0,
         left: 0,
         right: 0,
-        backgroundColor: '#4e4d4dff', // dark grey color
+        backgroundColor: 'rgb(196, 112, 112)', 
         boxShadow: 'none',
       }}
     >
       <Toolbar sx={{ minHeight: 64, px: 2, justifyContent: 'space-between' }}>
-        <Typography variant="h6" component="div">
+        <Typography variant="h5" component="div">
             <Box component="span" sx={{ fontWeight: 'bold', color: '#ffffff' }}>Pokeverse</Box>
         </Typography>
         {selectedCards.length >= 2 && (

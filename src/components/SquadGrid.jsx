@@ -9,13 +9,17 @@ function SquadGrid() {
         <Container disableGutters>
             {selectedCards.length > 0 && (
                 <Box mt={2} ml={0} pl={0}>
-                    <Typography variant="h5" fontWeight="bold" align="center">All Squad ({selectedCards.length})</Typography>
+                    <Typography variant="h5" fontWeight="bold" align="center" mb={2} >All Squad ({selectedCards.length})</Typography>
                 </Box>
             )}
             <Grid container spacing={2} justifyContent="center" sx={{ mb: 4 }}>
                 {selectedCards.map((card, index) => (
                     <Grid item xs={12} sm={6} md={4} key={index}>
-                        <Card>
+                        <Card sx={{
+                            '&:hover': {
+                                bgcolor: '#f6f6f6'
+                            }
+                        }}>
                             <CardContent
                                 sx={{
                                     display: "flex",
@@ -38,7 +42,7 @@ function SquadGrid() {
 
                                 <Typography variant="h6">{card.name}</Typography>
                             </CardContent>
-                            <CardActions sx={{ justifyContent: 'flex-end' }}>
+                            <CardActions sx={{ justifyContent: 'center', mb: 2 }}>
                                 <Button size="small" sx={{
                                     bgcolor: '#ca1b1b',
                                     color: '#FFFFFF',

@@ -7,12 +7,17 @@ function CardGrid({ data }) {
 
     return (
         <Grid container spacing={2} justifyContent="center">
-        {data.map((item, index) => {
-            const imageUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/${index + 1}.png`;
+        {data.map((item) => {
+            const id = item.url.split('/').filter(Boolean).pop();
+            const imageUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/${id}.png`;
 
             return (
-            <Grid item xs={12} sm={6} md={4} key={index}>
-                <Card>
+            <Grid item xs={12} sm={6} md={4} key={id}>
+                <Card sx={{
+                    '&:hover': {
+                        bgcolor: '#f6f6f6'
+                    }
+                }}>
                     <CardContent
                         sx={{
                         display: "flex",
@@ -35,7 +40,7 @@ function CardGrid({ data }) {
 
                         <Typography variant="h6">{item.name}</Typography>
                     </CardContent>
-                    <CardActions sx={{ justifyContent: 'flex-end' }}>
+                    <CardActions sx={{ justifyContent: 'center', mb: 2 }}>
                         <Button size="small" sx={{
                             bgcolor: '#31832d',
                             color: '#FFFFFF',

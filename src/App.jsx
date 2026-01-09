@@ -38,13 +38,12 @@ function App() {
           <Box mt={12}>
             <SquadGrid />
            </Box>
-
         )}
         <Box mt={2}>
           <Typography variant="h5" fontWeight="bold" align="center">All Pokemon</Typography>
         </Box>
 
-        <Box mt={4}>
+        <Box mt={2}>
           <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
         </Box>
         
